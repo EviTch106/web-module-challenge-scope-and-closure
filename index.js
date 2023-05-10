@@ -29,12 +29,16 @@ console.log('example task:', processFirstItem(['foo','bar'],function(str){return
   
   Study the code for counter1 and counter2, then answer the questions below.
   
-  1. What is the difference between counter1 and counter2?
+  1. What is the difference between counter1 and counter2? (counter2) has we call a closure where a funtion is returning a variable out of the scope function and (counter1) has what we call hoisting where a function
+   be invoked before they are declared and defined.
+
+
   
-  2. Which of the two uses a closure? How can you tell?
+  2. Which of the two uses a closure? How can you tell? (counter2) because a fuction can gather the info out of his own scope function.
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
-     counter2 be better?  
+     counter2 be better?  counter1 would be preferable in this senario 1 and counter2 in senario
+     2 and senario it better for me
 */
 
 // counter1 code
@@ -64,9 +68,12 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning() {
+  return Math.floor(Math.random() *Math.floor(3)); 
+
 }
+
+
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -83,10 +90,20 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*Code Here*/){
-  /*Code Here*/
-}
+function finalScore(inning, innings){
+  let homescore = 0;
+  let awayscore = 0;
+  for(let i =0; i<innings; i++){
+    homescore = homescore + inning();
+    awayscore = awayscore + inning();
+  }
+  return{
+    Home: homescore,
+    Away: awayscore
+ }
 
+}
+console.log(finalScore(inning, 9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
@@ -101,8 +118,11 @@ For example: invoking getInningScore(inning) might return this object:
   */
 
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(innings) {
+  return{
+    Home:innings(),
+    Away: innings()
+  }
 
 }
 
